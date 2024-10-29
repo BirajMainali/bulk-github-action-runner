@@ -1,0 +1,16 @@
+{
+    "organization": "your-organization",
+    "projects": [
+        {
+            "name": "your-project",
+            "workflows": {
+                "develop": [
+                    "deploy.yml"
+                ],
+                "master": [
+                    "deploy.yml"
+                ]
+            }
+        }
+    ]
+}
