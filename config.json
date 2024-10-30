@@ -1,11 +1,20 @@
 {
-    "organization": "your-organization",
+    "browser": {
+        "executablePath": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+        "userDataDir": "C:\\Users\\{{Your Name}}\\AppData\\Local\\Google\\Chrome\\User Data"
+    },
+    "supportedBranches": [
+        "develop",
+        "master"
+    ],
+    "organization": "organization-name",
     "projects": [
         {
-            "name": "your-project",
+            "name": "project-name",
             "workflows": {
                 "develop": [
-                    "deploy.yml"
+                    "build-dev",
+                    "deploy-dev"
                 ],
                 "master": [
                     "deploy.yml"
