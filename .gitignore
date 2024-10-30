@@ -6,7 +6,7 @@
 # dotenv files
 .env
 
-/config/*.json
+/config-sample.json
 # User-specific files
 *.rsuser
 *.suo
