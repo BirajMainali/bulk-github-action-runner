@@ -2,10 +2,6 @@
 
 This project automates the execution of multiple GitHub Actions workflows across various projects and branches using [Puppeteer](https://pptr.dev/), enabling streamlined workflow management from the command line.
 
-## Repository
-
-Find the source code in the [bulk-github-action-runner](https://github.com/BirajMainali/bulk-github-action-runner) repository.
-
 ## Features
 
 - Initiates workflows for specific branches (`develop` or `master`) as configured.
@@ -78,21 +74,6 @@ The script will prompt you to select a branch (`develop` or `master`) to run wor
 ```plaintext
 Which branch do you want to run the workflow for (develop/master)?
 ```
-
-## Script Structure
-
-The script includes the following key functions:
-
-- **`loadConfig()`**: Reads and parses `config.json`.
-- **`promptUserForBranch()`**: Prompts user to select a branch.
-- **`extractProjectWorkflows()`**: Retrieves workflows specific to the selected branch.
-- **`constructWorkflowUrl()`**: Builds the URL for each workflow on GitHub.
-- **`generateSubmitSelector()`**: Builds the selector to locate the workflow submission button.
-- **`openPageWithUrl()`**: Opens a new page and navigates to the specified URL.
-- **`initiateWorkflowAction()`**: Clicks the button to start the workflow.
-- **`revealBranchSelection()`**: Opens the branch selection dropdown.
-- **`selectBranch()`**: Types and selects the specified branch.
-- **`executeWorkflow()`**: Submits the workflow for execution.
 
 ## Notes
 
