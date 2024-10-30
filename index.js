@@ -37,14 +37,16 @@ const askUserForBranch = () => {
         for (let j = 0; j < workflows.length; j++) {
             const workflow = workflows[j];
             const url = `https://github.com/${organization}/${projectName}/actions/workflows/${workflow}`;
+            const formAction = `/${organization}/${projectName}/actions/manual`;
 
             console.log(`Opening ${url} in browser...\n`);
 
             const browser = await puppeteer.launch({
                 headless: false,
                 executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
-                userDataDir: 'C:\\Users\\Biraj Mainali\\AppData\\Local\\Google\\Chrome\\User Data',
-                args: ['--start-maximized']
+                userDataDir: 'C:\\Users\\DELL\\AppData\\Local\\Google\\Chrome\\User Data',
+                args: ['--start-maximized'],
+                ignoreDefaultArgs: ['--disable-extensions']
             });
 
             const page = await browser.newPage();
@@ -59,7 +61,16 @@ const askUserForBranch = () => {
             await page.keyboard.type(branch);
             await page.keyboard.press("Enter");
 
-            await page.locator("/html/body/div[1]/div[5]/div/main/turbo-frame/div/split-page-layout/div/div/div[2]/div/div/div[2]/div[2]/details/div/div/div/form[2]/button").click();
+            const submitSelector = `form[action="${formAction}"][method="POST"] button[type="submit"]`;
+            console.log("Using selector: " + submitSelector);
+
+            await page.waitForSelector(`input#branch[value='${branch}']`);
+            await page.evaluate(`window.document.querySelector('${submitSelector}').click()`);
+            // submitBtn.click();
+            console.log("Found selector: " + submitSelector);
+            await page.waitForNavigation();
+
+            // await page.locator("/html/body/div[1]/div[5]/div/main/turbo-frame/div/split-page-layout/div/div/div[2]/div/div/div[2]/div[2]/details/div/div/div/form[2]/button").click();
         }
     }
 })();
